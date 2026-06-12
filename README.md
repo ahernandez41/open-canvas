@@ -47,10 +47,6 @@ The app places you on a spectrum and tunes sound, color, timer length, and promp
 3. **Vibe Concierge** input (the star feature)
 4. Art-block prompt button
 
-**Later**: reflection, learning, and the personal focus profile.
-
-**Skip for now**: AI-generated music or art, chatbots for chatting's sake.
-
 ## Tech Stack
 
 **Frontend (JavaScript)**
