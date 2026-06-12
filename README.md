@@ -1,4 +1,4 @@
-# Vibe Focus
+# Empty Canvas
 
 A focus space for creatives that eases you in instead of just timing you. You don't just "start working" — you settle into a ritual, in an atmosphere tuned to you. The hunt for the perfect setup is the distraction; the app does the hunting for you.
 
