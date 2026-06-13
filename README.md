@@ -44,7 +44,7 @@ The app places you on a spectrum and tunes sound, color, timer length, and promp
 **MVP** — a clean single-page focus space:
 1. Curated soundscapes player
 2. Timer
-3. **Vibe Concierge** input (the star feature)
+3. **Vibe Setup** input (the star feature)
 4. Art-block prompt button
 
 ## Tech Stack
