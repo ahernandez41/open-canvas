@@ -1,8 +1,8 @@
-##Open Canvas
+Open Canvas
 
 A focus space for creatives that eases you in instead of just timing you. You don't just "start working", you settle into a ritual... in an atmosphere tuned to you. The hunt for the perfect setup is the distraction; this application does the hunting for you.
 
-##The Idea
+The Idea
 
 Matching a vibe to a person is fuzzy and personal... exactly what AI is good at. Instead of manually picking a soundscape, timer, and theme, you describe your state in plain language and the app configures the whole environment.
 
