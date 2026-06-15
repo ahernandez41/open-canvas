@@ -11,7 +11,7 @@ Matching a vibe to a person is fuzzy and personal... exactly what AI is good at.
     "Sketching loose ideas, low energy, want to feel hyped" → upbeat lofi · warm colors · 15-min sprints · warm-up doodle prompt
 
 ## The User Journey
-Before — warm-up
+## Before — warm-up
 
     Intention setting: type what you want to accomplish; AI turns it into a session plan.
     Warm-up: a short loosener based on your medium and mood ("5 quick gesture sketches").
