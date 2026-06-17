@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { fetchVibe } from './api/vibe'
+import Timer from './components/Timer'
 
 function App() {
   const [message, setMessage] = useState('')
   const [result, setResult] = useState(null)
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [timerMinutes, setTimerMinutes] = useState(25)
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -16,6 +18,7 @@ function App() {
     try {
       const vibe = await fetchVibe(message)
       setResult(vibe)
+      setTimerMinutes(vibe.timerMinutes)
     } catch (err) {
       setError(err.message)
     } finally {
@@ -57,6 +60,10 @@ function App() {
           <p className="mt-2 text-slate-400">{result.message}</p>
         </div>
       )}
+
+      <div className="mt-10 w-full flex justify-center">
+        <Timer durationMinutes={timerMinutes} />
+      </div>
     </div>
   )
 }
