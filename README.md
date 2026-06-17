@@ -71,4 +71,23 @@ React  →  Spring Boot  →  LLM API
 For the MVP: React frontend + one endpoint (POST /api/vibe) that turns text into a vibe config. Soundscapes and timer live in the browser; add Postgres later for the reflection/learning layer.
 Status
 
-Early concept. Next step: scaffold the single-page focus space.
+## Getting Started
+
+### Pre-reqs
+- Node.js 18+ and npm
+- Java 22 (JDK)
+
+### Frontend
+cd vibe-settings/frontend
+npm install
+npm run dev
+→ http://localhost:5173
+
+### Backend
+cd vibe-settings/backend
+.\gradlew.bat bootRun
+→ http://localhost:8080
+
+### Test the API
+Invoke-RestMethod -Uri "http://localhost:8080/api/vibe" -Method POST .
+
