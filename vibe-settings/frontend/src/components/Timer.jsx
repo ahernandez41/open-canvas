@@ -1,16 +1,19 @@
 import { useReducer, useEffect } from 'react'
 
-
+// NOTE: useReducer groups related timer state into one object and updates it
+// through named actions (reset, tick, start, pause) instead of many useState calls.
 function timerReducer(state, action) {
   switch (action.type) {
-    // Reset the timer to the total seconds and stop it
+    // NOTE: reset puts the timer back to the full duration and stops it.
     case 'reset':
       return {
         secondsLeft: action.totalSeconds,
         isRunning: false,
         isCompleted: false,
       }
-      // timer starts after the first tick is initialized.
+
+    // NOTE: tick runs once per second while the timer is running.
+    // If we're at 1 second or less, hit 0 and mark the session complete.
     case 'tick':
       if (state.secondsLeft <= 1) {
         return {
@@ -23,7 +26,8 @@ function timerReducer(state, action) {
         ...state,
         secondsLeft: state.secondsLeft - 1,
       }
-    // timer starts. 
+
+    // NOTE: start resumes counting. If we were at 0:00, restart from full duration.
     case 'start':
       if (state.secondsLeft === 0) {
         return {
@@ -36,20 +40,25 @@ function timerReducer(state, action) {
         ...state,
         isRunning: true,
       }
-      // timer pauses.
+
+    // NOTE: pause stops the interval but keeps the current time left.
     case 'pause':
       return {
         ...state,
         isRunning: false,
       }
+
     default:
       return state
   }
 }
-// timer component that displays the time left in minutes and seconds, there is a start, pause and reset button. When the timer reaches 0, it displays "Session complete" and the timer stops.
+
+// NOTE: Timer shows mm:ss, with Start / Pause / Reset controls.
+// durationMinutes comes from App.jsx — default 25, or from Set Vibe (e.g. 50).
 export default function Timer({ durationMinutes = 25 }) {
   const totalSeconds = durationMinutes * 60
 
+  // NOTE: state holds everything the timer needs in one place.
   const [state, dispatch] = useReducer(timerReducer, {
     secondsLeft: totalSeconds,
     isRunning: false,
@@ -57,11 +66,14 @@ export default function Timer({ durationMinutes = 25 }) {
   })
 
   const { secondsLeft, isRunning, isCompleted } = state
- 
+
+  // NOTE: when duration changes (e.g. user clicks Set Vibe), reset to the new length.
   useEffect(() => {
     dispatch({ type: 'reset', totalSeconds })
   }, [totalSeconds])
 
+  // NOTE: countdown engine — only runs while isRunning is true.
+  // setInterval fires every 1000ms (1 second) and dispatches 'tick'.
   useEffect(() => {
     if (!isRunning || secondsLeft <= 0) return
 
@@ -69,15 +81,17 @@ export default function Timer({ durationMinutes = 25 }) {
       dispatch({ type: 'tick' })
     }, 1000)
 
+    // NOTE: cleanup is critical — without clearInterval, timers stack up
+    // and the countdown speeds up or keeps running after pause.
     return () => clearInterval(interval)
   }, [isRunning, secondsLeft])
 
-  // formatting the time left in minutes and seconds.
+  // NOTE: convert raw seconds to display format — 90 → "01:30"
   const minutes = Math.floor(secondsLeft / 60)
   const seconds = secondsLeft % 60
   const display = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
 
-  // handlers for the buttons
+  // NOTE: handlers don't change state directly — they dispatch actions to the reducer.
   function handleStart() {
     dispatch({ type: 'start', totalSeconds })
   }
@@ -90,9 +104,9 @@ export default function Timer({ durationMinutes = 25 }) {
     dispatch({ type: 'reset', totalSeconds })
   }
 
-  // rendering the timer component
   return (
     <div className="flex flex-col items-center gap-4 w-full max-w-md">
+      {/* NOTE: tabular-nums keeps digits from jumping as the time changes */}
       <p className={`text-6xl font-mono tabular-nums ${isCompleted ? 'text-violet-400' : 'text-white'}`}>
         {display}
       </p>
@@ -102,6 +116,7 @@ export default function Timer({ durationMinutes = 25 }) {
       )}
 
       <div className="flex gap-3">
+        {/* NOTE: show Start when paused/stopped, Pause when running */}
         {!isRunning ? (
           <button
             type="button"
