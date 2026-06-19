@@ -59,7 +59,7 @@ The app places you on a spectrum and tunes sound, color, timer length, and promp
 - **PostgreSQL**: user profiles & session history (add later)
 
 **AI Layer**
-- **Anthropic Claude API**, called from Spring Boot. The Concierge sends your text and gets back a JSON vibe config (sound, theme, timer) that the frontend applies.
+- **Anthropic Claude API**, called from Spring Boot. The AI layer sends your text and gets back a JSON vibe config (sound, theme, timer) that the frontend applies.
 
 **Flow**
 
