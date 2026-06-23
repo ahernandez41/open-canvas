@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { fetchVibe } from './api/vibe'
 import Timer from './components/Timer'
-import SoundscapeTest from './components/SoundscapeTest'
+import SoundscapePlayer from './components/SoundscapePlayer'
 
 function App() {
   const [message, setMessage] = useState('')
@@ -59,14 +59,13 @@ function App() {
           <p><strong>Timer:</strong> {result.timerMinutes} min</p>
           <p><strong>Check-ins:</strong> {result.checkIns}</p>
           <p className="mt-2 text-blue-700">{result.message}</p>
+          <SoundscapePlayer soundscape={result.soundscape} />
         </div>
       )}
 
       <div className="mt-10 w-full flex justify-center">
         <Timer durationMinutes={timerMinutes} />
       </div>
-
-      <SoundscapeTest />
     </div>
   )
 }
