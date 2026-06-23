@@ -66,7 +66,7 @@ function App() {
         <Timer durationMinutes={timerMinutes} />
       </div>
 
-      <SoundscapeTest />
+      <SoundscapeTest soundscape={result?.soundscape ?? 'soft-rain'} />
     </div>
   )
 }

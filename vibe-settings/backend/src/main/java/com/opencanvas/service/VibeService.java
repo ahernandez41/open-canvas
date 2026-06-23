@@ -21,7 +21,7 @@ public class VibeService {
 
         if (containsAny(normalized, "focus", "work", "study", "deep")) {
             return new VibeResponse(
-                    "coffee-shop",
+                    "cozy-coffee-shop",
                     "green-contrast",
                     25,
                     "steady",
@@ -41,7 +41,7 @@ public class VibeService {
 
         if (containsAny(normalized, "creative", "create", "brainstorm", "inspire", "imagine")) {
             return new VibeResponse(
-                    "lofi-beats",
+                    "cozy-book-store",
                     "sunset-glow",
                     35,
                     "spark",
@@ -55,13 +55,13 @@ public class VibeService {
                     "neon-bright",
                     30,
                     "pulsing",
-                    "A high-energy vibe built to keep momentum and confidence up."
+                    "A high-energy vibe built to keep momentum and confidence steady."
             );
         }
 
         if (containsAny(normalized, "anxious", "stressed", "overwhelmed", "panic", "burnout")) {
             return new VibeResponse(
-                    "forest-breeze",
+                    "brown-noise",
                     "soft-blue",
                     20,
                     "gentle",
